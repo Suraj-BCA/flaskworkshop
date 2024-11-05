@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>User Dashboard</h2>
+        <div class="toolbar">
+        <a href="{{url_for('user_dashboard')}}"> View Users</a>
+        <a href="{{url_for('logout')}}"> Logout</a>
+        </div>
+        <h3>Your Tasks</h3>
+       
+        <ul>
+            {% if tasks %}
+            {% for task in tasks %}
+            <li>
+                <strong>{{task.name}}</strong> - {{task.description}} - {{task.priority}} -Status :{{task.status}}
+                <form action="{{url_for('update_task',task_id=task_id)}}" method="post">
+                    <select name="status" id="">
+                        <option value="pending" {% if task.status =="pending"%} selected {% endif %}>Pending</option>
+                        <option value="In Progress" {% if task.status =="In Progress"%} selected {% endif %}>In Progress</option>
+                        <option value="Completed" {% if task.status =="Completed"%} selected {% endif %}>Completed</option>
+                    </select>
+                    <button type="submit">Update Status</button>
+                </form>
+            </li>
+            {%endfor%}
+        </ul>
+        
+    </div>
+
+</body>
+
+</html>

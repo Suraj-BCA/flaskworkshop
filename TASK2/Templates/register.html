@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form method="post" action="">
+            User Name :<input type="text" name="username" placeholder="User Name" required><br><br>
+            Password : <input type="password" name="pwd" placeholder="Enter Password" required><br><br>
+            Email : <input type="email" name="email" placeholder="Enter Eamil" required><br><br>
+            <select name="role" id="" required>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+            <button type="submit">Register</button><br><br>
+        </form>
+        <a href="{{url_for('register')}}">Already Have an Account Login </a>
+    </div>
+
+</body>
+
+</html>
