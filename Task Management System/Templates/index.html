@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+    <style>
+        h1{
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Management System</h1>
+
+    <form action="/taskmanage" method="POST">
+        <label for="task" >Task Name : </label>
+        <input type="text" id="task" name="task" ><br><br>
+
+      <br><br>
+
+        <label for="operation">Operation</label>
+
+        <select id="user" name="user">
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            
+        </select>
+
+        <button type="submit">Submit</button>
+
+    </form>
+    
+
+    {% if result is not none %}
+        <h2>Result :</h2><br><p>Task of <b>A</b> : {{a}}</p><br><p>Task of <b>B</b> : {{b}}</p><br><p>Task of <b>C</b> : {{c}}</p>
+    {% endif %}
+    
+</body>
+</html>

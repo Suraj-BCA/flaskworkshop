@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        h1{
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+
+    <form action="/calculate" method="POST">
+        <label for="num1" >Number 1 : </label>
+        <input type="number" id="num1" name="num1" required><br><br>
+
+        <label for="num2" >Number 2 : </label>
+        <input type="number" id="num2" name="num2" required><br><br>
+
+        <label for="operation">Operation</label>
+
+        <select id="operation" name="operation">
+            <option value="ADDITION">ADD</option>
+            <option value="SUBTRACTION">SUB</option>
+            <option value="MULTIPLICATION">MUL</option>
+            <option value="DIVISION">DIV</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+
+    </form>
+
+    {% if result is not none %}
+        <h2>Result :</h2><p> <b>{{option}}</b> of <b>{{num1}}</b> and  <b>{{num2}}</b> is = <b>{{result}}</b></p>
+    {% endif %}
+    
+</body>
+</html>

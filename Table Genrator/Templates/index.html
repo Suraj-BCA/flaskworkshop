@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Genrator</title>
+    <style>
+        h1{
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1>Table Genrator</h1>
+
+    <form action="/table" method="POST">
+        <label for="num" >Number : </label>
+        <input type="number" id="num" name="num" required><br><br>
+
+        
+
+        <input type="submit">
+
+    </form>
+
+    {% if result is not none %}
+        <h2>Result :</h2><p> <b>Table </b> of <b>{{num}}</b> is =</p>
+    {% endif %}
+    
+
+    {%for j in result %}
+        <p>{{j}}</p>
+    {%endfor%}
+</body>
+</html>
