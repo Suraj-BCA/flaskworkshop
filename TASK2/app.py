@@ -89,4 +89,24 @@ def admin_task():
     return render_template('admin_dashboard.html')
 
 
+@app.route('/update_task' ,methods=['POST'])
+def admin_task():
+    if 'user_id' not is session or session['role'] !='admin':
+        return redirect(url_for('login'))
+    task_name=request.form['task_name']
+    description=request.form['description']
+    priority=request.form['priority']
+    user_id=request.form['user_id']
+    task=Task(name=task_name,description=description,priority=priority,user_id=user_id)
+    db.session.add(task)
+    db.session.commit()
+    return render_template('admin_dashboard.html')
 
+@app.logout('/logout')
+def logout():
+    session.pop('user_id',)
+
+
+
+if __name__='__main__':
+    app.route(debug=True)
