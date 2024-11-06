@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .h {
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="h">Company Profile</h2>
+        <h2>Vignan Software Solution</h2>
+        <p>Vignan University has earned significant rankings and accreditations across various domains. In 2023, it was
+            ranked 72nd among universities by NIRF. It holds an 'A+' grade of accreditation from NAAC and tier-1
+            accreditation from the NBA. Additionally, it has 12(B) status and approval from AICTE. The university is
+            also DSIR certified by the Department of Science and Industrial Research. In QS-I-GAUGE accreditation, it
+            achieved a DIAMOND rating, showcasing outstanding performance with a score of 90%.</p>
+        <h4>DEPARTMENT'S</h4>
+        <ul>
+            <li>B-TECH CSE</li>
+            <li>B-TECH IT</li>
+            <li>MCA</li>
+            <li>BCA</li>
+
+        </ul>
+
+    </div>
+    <div class="toolbar">
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+
+</html>

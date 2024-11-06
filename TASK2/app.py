@@ -104,6 +104,16 @@ def users():
     return render_template('user.html', users=users)
 
 
+@app.route('/companyprofile')
+def companyprofile():
+    if 'user_id' not in session or session['role'] != 'admin':
+        return redirect(url_for('login'))
+
+    users = User.query.filter_by(role='user').all()
+    return render_template('companyprofile.html', companyprofile=companyprofile)
+
+
+
 
 @app.route('/assign_task', methods=['POST'])
 def assign_task():
