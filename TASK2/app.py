@@ -33,7 +33,7 @@ def index():
 def register():
     if request.method == 'POST':
         username = request.form['username']
-        password = generate_password_hash(request.form['password'], method='pbkdf2:sha256')
+        password = generate_password_hash(request.form['pwd'], method='pbkdf2:sha256')
         email = request.form['email']
         role = request.form['role']
 
@@ -51,7 +51,7 @@ def register():
 def login():
     if request.method == 'POST':
         username = request.form['username']
-        password = request.form['password']
+        password = request.form['pwd']
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
@@ -84,6 +84,26 @@ def admin_dashboard():
     users = User.query.filter_by(role='user').all()
     tasks = Task.query.all()
     return render_template('admin_dashboard.html', users=users, tasks=tasks)
+
+
+@app.route('/tasks')
+def tasks():
+    if 'user_id' not in session or session['role'] != 'admin':
+        return redirect(url_for('login'))
+
+    tasks = Task.query.all()
+    return render_template('tasks.html', tasks=tasks)
+
+
+@app.route('/users')
+def users():
+    if 'user_id' not in session or session['role'] != 'admin':
+        return redirect(url_for('login'))
+
+    users = User.query.filter_by(role='user').all()
+    return render_template('user.html', users=users)
+
+
 
 @app.route('/assign_task', methods=['POST'])
 def assign_task():
@@ -130,5 +150,6 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    db.create_all()  # Ensure that the database tables are created
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

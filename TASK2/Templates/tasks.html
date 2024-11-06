@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Tasks</h2>
+        <div class="toolbar">
+           
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        
+
+        <!-- <h3>Tasks</h3> -->
+        <ul>
+            {% if tasks %}
+                {% for task in tasks %}
+                    <li>
+                        <strong>{{ task.name }}</strong> - {{ task.description }} - {{ task.priority }} - Status: {{ task.status }}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>No tasks assigned.</li>
+            {% endif %}
+        </ul>
+
+        
+</body>
+
+</html>

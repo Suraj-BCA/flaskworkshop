@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Users</h2>
+        
+        <ul>
+            {% if users %}
+                {% for user in users %}
+                    <li>{{ user.username }} - {{ user.email }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No users found.</li>
+            {% endif %}
+        </ul>
+        
+    </div>
+    <div class="toolbar">
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+
+</html>

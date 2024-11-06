@@ -5,25 +5,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            border-top: 5px solid #4CAF50;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            text-align: left;
+            font-size: 13px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 13px;
+            width: 100%;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            border: 1px solid #4CAF50;
+            outline: none;
+            background-color: #fff;
+        }
+
+        button {
+            padding: 9px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            input[type="email"],
+            select {
+                padding: 12px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
     <div class="container">
         <h2>Registration Form</h2>
-        <form method="post" action="">
-            User Name :<input type="text" name="username" placeholder="User Name" required><br><br>
-            Password : <input type="password" name="pwd" placeholder="Enter Password" required><br><br>
-            Email : <input type="email" name="email" placeholder="Enter Eamil" required><br><br>
-            <select name="role" id="" required>
+        <form method="post" action="{{ url_for('register') }}">
+            <label for="username">User Name:</label>
+            <input type="text" name="username" placeholder="Enter User Name" required>
+
+            <label for="pwd">Password:</label>
+            <input type="password" name="pwd" placeholder="Enter Password" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Enter Email" required>
+
+            <label for="role">Role:</label>
+            <select name="role" required>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
-            </select>
-            <button type="submit">Register</button><br><br>
-        </form>
-        <a href="{{url_for('register')}}">Already Have an Account Login </a>
-    </div>
+            </select><br>
 
+            <button type="submit">Register</button><br>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
 </body>
 
 </html>
